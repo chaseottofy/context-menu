@@ -1,0 +1,30 @@
+
+# source code
+src
+index.html
+
+# compiler
+tsconfig.json
+vite.config.js
+
+# files
+*.log
+*.code-workspace
+
+# tests
+test
+temp
+jest.config.js
+setupJest.ts
+coverage
+
+#  lint
+.eslintrc
+.eslintignore
+.prettierrc
+
+# IDE - VSCode
+.vscode
+
+# git
+.git

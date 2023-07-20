@@ -1,4 +1,4 @@
-import './index.scss';
+import './context-menu.scss';
 
 interface Option {
   label: string | [string, string];
@@ -24,6 +24,7 @@ export default class ContextMenu {
     this.targetContainer = targetContainer;
     this.options = options;
     this.theme = theme || 'dark';
+
     this.menu = null;
     this.width = 260;
     this.maxHeight = 300;
@@ -50,7 +51,8 @@ export default class ContextMenu {
   }
 
   private static checkPrevious() {
-    const checkPrevious = document.querySelector('.context-menu');
+    // const checkPrevious = document.querySelector(`.${styles['context-menu']}`);
+    const checkPrevious = document.querySelector(`.context-menu`);
     if (checkPrevious) {
       checkPrevious.remove();
     }
@@ -125,7 +127,6 @@ export default class ContextMenu {
       } else {
         optionDiv.textContent = option.label;
       }
-
       const optionDivClick = this.handleMenuItemClick.bind(this, option);
       optionDiv.addEventListener('click', optionDivClick);
       optionsWrapper.append(optionDiv);
@@ -144,6 +145,8 @@ export default class ContextMenu {
     }
 
     if (this.menu) {
+      this.menu.classList.add('context-menu');
+
       const clickX = ev.clientX;
       const clickY = ev.clientY;
       const leftDiff = windowWidth - (clickX + W);
@@ -167,14 +170,14 @@ export default class ContextMenu {
 
     if (typeof this.theme === 'object') {
       for (const [key, value] of Object.entries(this.theme)) {
-        tempMenu.style.setProperty(`--context-menu-${key.toLowerCase()}`, value.toString());
+        tempMenu.style.setProperty(`--context-menu-${key}`, value.toString());
       }
       tempMenu.dataset.menuTheme = 'custom';
     } else {
       tempMenu.dataset.menuTheme = this.theme.toString();
     }
 
-    this.menu = document.querySelector('.context-menu') || tempMenu;
+    this.menu = tempMenu.cloneNode(true) as HTMLDivElement;
     this.setMenuPosition(ev);
 
     const optionsWrapper = document.createElement('div');

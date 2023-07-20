@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "extends": [
+    "plugin:unicorn/all",
+    "airbnb",
+    "eslint:recommended","plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "linebreak-style": 0,
+    "no-unused-vars": "error",
+    "quote-props": "off",
+    "no-restricted-syntax": "off", // allow for...of
+    "unicorn/prefer-module": "off",
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/prefer-dom-node-dataset": "off",
+    "unicorn/prefer-node-protocol": "off",
+    "unicorn/no-null": "off",
+    "no-console": "off",
+    "max-classes-per-file": "off"
+  }
+}

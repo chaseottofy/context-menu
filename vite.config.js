@@ -1,20 +1,17 @@
-import path from 'node:path';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import { resolve } from "path";
 
 export default defineConfig({
-  plugins: [
-    dts({
-      insertTypesEntry: true,
-    }),
-  ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, 'src/context-menu-js.ts'),
-      name: 'context-menu-js',
-      formats: ['es', 'umd'],
-      fileName: (format) => `context-menu-js.${format}.js`,
+      entry: resolve(__dirname, 'src/context-menu.ts'),
+      name: 'ContextMenu',
+      fileName: (format) => `context-menu.${format}.js`,
     },
-
+    rollupOptions: {
+      output: {
+        format: 'es',
+      },
+    },
   },
 });
