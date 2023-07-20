@@ -12,6 +12,8 @@ dist
 dist-ssr
 *.local
 
+screenshots
+
 temp
 
 # Editor directories and files

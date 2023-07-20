@@ -94,4 +94,4 @@ const svg = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" vie
 
 ### License
 
-This project is licensed under the [MIT License](https://github.com/chaseottofy/context-menu/blob/main/LICENSE)
+This project is licensed under the [MIT License](https://github.com/chaseottofy/tiny-context-menu-js/blob/main/LICENSE)
