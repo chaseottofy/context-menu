@@ -1,0 +1,112 @@
+$themes: (
+  dark: (
+    context-menu-text: #eeeeee,
+    context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5),
+    context-menu-texthover: #eeeeee,
+    context-menu-background: rgba(28, 28, 28, .9),
+    context-menu-backgroundhover: hsla(0, 0%, 100%, 0.08)
+  ),
+  light: (
+    context-menu-text: #000000,
+    context-menu-text-shadow: 0 0 2px rgba(128, 128, 128, 0.5),
+    context-menu-texthover: #000000,
+    context-menu-background: rgba(237, 237, 237, 0.9),
+    context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)
+  ),
+  custom: (
+    context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5),
+    context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)
+  )
+);
+
+@mixin setTheme($theme) {
+  &[data-menu-theme='#{$theme}'] {
+    @each $property, $value in map-get($themes, $theme) {
+      --#{$property}: #{$value};
+    }
+  }
+}
+
+[data-menu-theme] {
+  @include setTheme(dark);
+  @include setTheme(light);
+  @include setTheme(custom);
+}
+
+.context-menu {
+  z-index: 9999;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-size: inherit;
+  font-family: inherit;
+  margin: 0;
+  justify-content: center;
+  background: var(--context-menu-background);
+  text-shadow: var(--context-menu-text-shadow);
+  opacity: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 
+    rgba(0, 0, 0, .2) 0 1px 2px 0,
+    rgba(0, 0, 0, .1) 0 1px 3px 0;
+
+  &.cm-tr {
+    opacity: 1;
+    transition: opacity ease-in-out .1s;
+  }
+}
+
+.context-menu-options-wrapper {
+  padding: 10px 0;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.context-menu-option {
+  height: 40px;
+  min-height: 40px;
+  padding: 0 10px;
+  width: auto;
+  color: var(--context-menu-text);
+  line-height: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 90%;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--context-menu-backgroundhover);
+    color: var(--context-menu-texthover);
+
+    .context-menu-option-icon-wrapper {
+      color: var(--context-menu-texthover);
+    }
+  }
+}
+
+.context-menu-option-icon-wrapper {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--context-menu-text);
+
+  > svg {
+    width: 80%;
+    height: 100%;
+  }
+}
+
+.context-menu-option-icon-wrapper,
+.context-menu-option-text-wrapper {
+  user-select: none;
+  pointer-events: none;
+}

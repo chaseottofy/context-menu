@@ -1,0 +1,42 @@
+{
+  "name": "context-menu-js",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "A simple context menu library",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.64.0",
+    "sass-loader": "^13.3.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.0",
+    "vite-plugin-dts": "^3.3.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "module": "dist/index.es.js",
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
+    },
+    "./dist/index.es.js": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
+    },
+    "./dist/index.js": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
+    }
+  }
+
+}
