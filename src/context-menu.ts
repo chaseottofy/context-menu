@@ -51,7 +51,6 @@ export default class ContextMenu {
   }
 
   private static checkPrevious() {
-    // const checkPrevious = document.querySelector(`.${styles['context-menu']}`);
     const checkPrevious = document.querySelector(`.context-menu`);
     if (checkPrevious) {
       checkPrevious.remove();

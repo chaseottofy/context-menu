@@ -1,12 +1,28 @@
 ## tiny-context-menu-js
 
-#### A tiny, 2 KB, zero dependency, context menu library that is easy to use and style.
+* Tiny 2 KB build
+* Zero dependencies
+* Two themes & easy theme customization
+* Close on click away
+* Edge detection
+* Type safe
+* Memory and Event Clean-up
 
-#### `npm i tiny-context-menu-js`
+### Installation
 
-**import ContextMenu from "tiny-context-menu-js";**
-**ContextMenu(target, items, theme).init();**
-**ContextMenu().destroy(); // remove listener**
+```bash
+npm i tiny-context-menu-js
+```
+
+### General Setup
+
+```javascript
+import ContextMenu from "tiny-context-menu-js";
+
+/* ContextMenu.init() && ContextMenu.destroy() */
+ContextMenu(target, items, theme).init();
+ContextMenu().destroy(); // remove instance
+```
 
 ### Schema
 
@@ -18,6 +34,8 @@
 * **ContextMenu(..., items, ...)**
   * Array[ Object, ... ]
   * label is necessary - action is not.
+  * Must provide icons in Array with title included.
+    * Icons must be inline-svg
   
 ```javascript
   [ { label: 'title', action: () ... },
@@ -33,7 +51,7 @@
 
 ---
 
-#### Example
+### Example
 
 ```javascript
 const target = document.querySelector('.target');
@@ -54,9 +72,7 @@ const items = [
 ]
 
 ContextMenu(target, items, "light").init();
-
 ContextMenu.destroy();
-
 ContextMenu(target, items,
 { 
   text: "#000", 
@@ -75,3 +91,7 @@ const svg = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" vie
   action: // ...
 }]
 ```
+
+### License
+
+This project is licensed under the [MIT License](https://github.com/chaseottofy/context-menu/blob/main/LICENSE)
