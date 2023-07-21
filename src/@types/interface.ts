@@ -17,7 +17,6 @@ export interface calcInlineInterface {
     click: [number, number],
     menu: [number, number],
     len: number,
-    offsetTop: number,
     scrollH: number,
   ): calcInlineReturnObject;
 }

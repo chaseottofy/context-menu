@@ -128,7 +128,6 @@ export default class ContextMenu {
           [ev.clientX, ev.clientY],
           [this.width, this.maxHeight],
           this.options.length,
-          this.targetContainer.getBoundingClientRect().top,
           window.scrollY,
         ) as calcInlineReturnObject;
       this.menu.style.height = `${height}px`;
