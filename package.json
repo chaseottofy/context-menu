@@ -1,6 +1,6 @@
 {
   "name": "tiny-context-menu-js",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "dist/context-menu.es.js",
   "types": "dist/context-menu.d.ts",
   "type": "module",
