@@ -17,6 +17,7 @@ screenshots
 test
 temp
 jest.config.js
+context-menu.test.js
 setupJest.ts
 coverage
 
@@ -24,6 +25,7 @@ coverage
 .eslintrc
 .eslintignore
 .prettierrc
+
 
 # IDE - VSCode
 .vscode

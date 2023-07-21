@@ -1,6 +1,6 @@
 ## tiny-context-menu-js
 
-* Tiny 2 KB build
+* 2 KB build
 * Zero dependencies
 * Two themes & easy theme customization
 * Close on click away

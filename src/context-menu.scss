@@ -1,27 +1,25 @@
 $themes: (
-  dark: (
-    context-menu-text: #eeeeee,
+  dark: (context-menu-text: #eeeeee,
+    context-menu-scrollthumb:rgba(69, 69, 69, 0.9),
     context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5),
     context-menu-texthover: #eeeeee,
     context-menu-background: rgba(28, 28, 28, .9),
-    context-menu-backgroundhover: hsla(0, 0%, 100%, 0.08)
-  ),
-  light: (
-    context-menu-text: #000000,
-    context-menu-text-shadow: 0 0 2px rgba(128, 128, 128, 0.5),
+    context-menu-backgroundhover: hsla(0, 0%, 100%, 0.08)),
+  light: (context-menu-text: #000000,
+    context-menu-scrollthumb:rgb(122, 121, 121),
+    context-menu-text-shadow: 0 0 2px rgba(146, 146, 146, 0.5),
     context-menu-texthover: #000000,
-    context-menu-background: rgba(237, 237, 237, 0.9),
-    context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)
-  ),
-  custom: (
-    context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5),
-    context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)
-  )
+    context-menu-background: rgba(243, 241, 241, 0.9),
+    context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)),
+  custom: (context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5),
+    context-menu-scrollthumb:rgba(96, 95, 95, 0.9),
+    context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)),
 );
 
 @mixin setTheme($theme) {
   &[data-menu-theme='#{$theme}'] {
-    @each $property, $value in map-get($themes, $theme) {
+    @each $property,
+    $value in map-get($themes, $theme) {
       --#{$property}: #{$value};
     }
   }
@@ -39,14 +37,15 @@ $themes: (
   display: flex;
   flex-direction: column;
   font-size: inherit;
+  box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
-  justify-content: center;
   opacity: 0;
+  justify-content: center;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 
-    rgba(0, 0, 0, .2) 0 1px 2px 0,
+  box-shadow:
+    rgba(0, 0, 0, .2) 0 1px 2px 1px,
     rgba(0, 0, 0, .1) 0 1px 3px 0;
   text-shadow: var(--context-menu-text-shadow);
   background: var(--context-menu-background);
@@ -75,8 +74,22 @@ $themes: (
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 90%;
+  font-size: 94%;
   cursor: pointer;
+
+  & svg:first-of-type {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    color: var(--context-menu-text);
+    fill: var(--context-menu-text);
+    user-select: none;
+    pointer-events: none;
+  }
 
   &:hover {
     background: var(--context-menu-backgroundhover);
@@ -88,24 +101,15 @@ $themes: (
   }
 }
 
-.context-menu-option-icon-wrapper {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  line-height: 20px;
-  text-align: center;
-  vertical-align: middle;
-  color: var(--context-menu-text);
-
-  > svg {
-    width: 80%;
-    height: 100%;
-  }
+.context-menu-options-wrapper::-webkit-scrollbar-track {
+  background-color: var(--context-menu-background);
 }
 
-.context-menu-option-icon-wrapper,
-.context-menu-option-text-wrapper {
-  user-select: none;
-  pointer-events: none;
+.context-menu-options-wrapper::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--context-menu-background);
+}
+
+.context-menu-options-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--context-menu-scrollthumb);
 }

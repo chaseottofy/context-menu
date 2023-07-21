@@ -1,27 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "ESNext",
     "lib": [
-      "es6",
-      "dom"
+      "ESNext",
+      "DOM"
     ],
-    "allowJs": false,
-    "outDir": "/dist",
-    "rootDir": "src",
+    "moduleResolution": "Node",
     "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "outDir": "/dist",
+    "rootDir": "../temp/src",
     "noImplicitAny": true,
     "esModuleInterop": true,
     "downlevelIteration": true,
-    "moduleResolution": "node",
-    "baseUrl": "."
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "types": [
+      "node",
+      "vitest/importMeta"
+    ],
   },
   "include": [
-    "src/**/*"
+    "../temp/src/**/*",
+    // "src/test/**/*"
   ],
   "exclude": [
-    "test/**/*",
     "node_modules",
-    // "src/typings/main.d.ts"
   ]
 }
