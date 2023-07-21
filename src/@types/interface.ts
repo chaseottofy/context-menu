@@ -3,7 +3,7 @@ export interface Option {
   action?: () => void;
 }
 
-export interface calcInlineReturnObject {
+export interface CalcInlineReturnObject {
   height: number;
   maxHeight: number;
   width: number;
@@ -18,5 +18,5 @@ export interface calcInlineInterface {
     menu: [number, number],
     len: number,
     scrollH: number,
-  ): calcInlineReturnObject;
+  ): CalcInlineReturnObject;
 }

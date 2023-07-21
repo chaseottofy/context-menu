@@ -1,6 +1,6 @@
 import './context-menu.scss';
 
-import { Option, calcInlineReturnObject } from './@types/interface';
+import { Option, CalcInlineReturnObject } from './@types/interface';
 
 import parseSVG from './menu.parse-svg';
 
@@ -22,11 +22,7 @@ export default class ContextMenu {
 
   private maxHeight: number;
 
-  constructor(
-    targetContainer: HTMLElement,
-    options: Option[],
-    theme?: string | object,
-  ) {
+  constructor(targetContainer: HTMLElement, options: Option[], theme?: string | object) {
     this.targetContainer = targetContainer;
     this.options = options;
     this.theme = theme || 'dark';
@@ -129,7 +125,7 @@ export default class ContextMenu {
           [this.width, this.maxHeight],
           this.options.length,
           window.scrollY,
-        ) as calcInlineReturnObject;
+        ) as CalcInlineReturnObject;
       this.menu.style.height = `${height}px`;
       this.menu.style.maxHeight = `${maxHeight}px`;
       this.menu.style.width = `${width}px`;
