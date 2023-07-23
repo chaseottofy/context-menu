@@ -7,6 +7,7 @@
 * Edge detection, Dynamic Positioning
 * Accounts for any page scroll
 * Memory and Event Clean-up
+* [DEMO (codepen)](https://codepen.io/chaseottofy/pen/vYQaaeq)
 
 ![screen](screenshots/scrdark.png)
 *Dark mode*
