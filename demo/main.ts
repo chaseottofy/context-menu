@@ -1,4 +1,4 @@
-import ContextMenu, { MenuOption } from '../dist/context-menu';
+import ContextMenu, { MenuOption } from 'tiny-context-menu-js';
 
 const targetContainer = document.querySelector('.target-container') as HTMLElement;
 
