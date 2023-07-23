@@ -8,6 +8,9 @@
 * Accounts for any page scroll
 * Memory and Event Clean-up
 
+![screen](screenshots/scrdark.png)
+*Dark mode*
+
 ### Installation
 
 ```bash
@@ -71,6 +74,9 @@ const theme3 = {
   scrollthumb: 'hsla(0, 0%, 20%, 0.8 )',
 }
 ```
+
+![screen](screenshots/scrlight.png)
+*Light mode*
 
 ### Altering CSS
 
