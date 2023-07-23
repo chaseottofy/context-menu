@@ -11,7 +11,9 @@ vite.config.js
 *.log
 *.code-workspace
 
+# misc
 screenshots
+demo
 
 # tests
 test

@@ -12,12 +12,13 @@ $themes: (
     context-menu-background: rgba(243, 241, 241, 0.9),
     context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)),
   custom: (context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5),
-    context-menu-scrollthumb:rgba(96, 95, 95, 0.9),
+    context-menu-scrollthumb:hsla(0, 1%, 37%, 0.9),
     context-menu-backgroundhover: hsla(0, 0%, 20%, 0.08)),
 );
 
 @mixin setTheme($theme) {
   &[data-menu-theme='#{$theme}'] {
+
     @each $property,
     $value in map-get($themes, $theme) {
       --#{$property}: #{$value};
@@ -49,6 +50,7 @@ $themes: (
     rgba(0, 0, 0, .1) 0 1px 3px 0;
   text-shadow: var(--context-menu-text-shadow);
   background: var(--context-menu-background);
+
   &.cm-tr {
     opacity: 1;
     transition: opacity ease-in-out .1s;

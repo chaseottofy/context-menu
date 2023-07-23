@@ -1,0 +1,106 @@
+[data-menu-theme][data-menu-theme=dark] {
+  --context-menu-text: #eeeeee;
+  --context-menu-scrollthumb: rgba(69, 69, 69, .9);
+  --context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5);
+  --context-menu-texthover: #eeeeee;
+  --context-menu-background: rgba(28, 28, 28, .9);
+  --context-menu-backgroundhover: hsla(0, 0%, 100%, .08)
+}
+
+[data-menu-theme][data-menu-theme=light] {
+  --context-menu-text: #000000;
+  --context-menu-scrollthumb: rgb(122, 121, 121);
+  --context-menu-text-shadow: 0 0 2px rgba(146, 146, 146, .5);
+  --context-menu-texthover: #000000;
+  --context-menu-background: rgba(243, 241, 241, .9);
+  --context-menu-backgroundhover: hsla(0, 0%, 20%, .08)
+}
+
+[data-menu-theme][data-menu-theme=custom] {
+  --context-menu-text-shadow: 0 0 2px rgba(0, 0, 0, .5);
+  --context-menu-scrollthumb: hsla(0, 1%, 37%, .9);
+  --context-menu-backgroundhover: hsla(0, 0%, 20%, .08)
+}
+
+.context-menu {
+  z-index: 9999;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-size: inherit;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+  opacity: 0;
+  justify-content: center;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: #0003 0 1px 2px 1px, #0000001a 0 1px 3px;
+  text-shadow: var(--context-menu-text-shadow);
+  background: var(--context-menu-background)
+}
+
+.context-menu.cm-tr {
+  opacity: 1;
+  transition: opacity ease-in-out .1s
+}
+
+.context-menu-options-wrapper {
+  padding: 10px 0;
+  overflow-y: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.context-menu-option {
+  height: 40px;
+  min-height: 40px;
+  padding: 0 10px;
+  width: auto;
+  color: var(--context-menu-text);
+  line-height: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 94%;
+  cursor: pointer
+}
+
+.context-menu-option svg:first-of-type {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--context-menu-text);
+  fill: var(--context-menu-text);
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none
+}
+
+.context-menu-option:hover {
+  background: var(--context-menu-backgroundhover);
+  color: var(--context-menu-texthover)
+}
+
+.context-menu-option:hover .context-menu-option-icon-wrapper {
+  color: var(--context-menu-texthover)
+}
+
+.context-menu-options-wrapper::-webkit-scrollbar-track {
+  background-color: var(--context-menu-background)
+}
+
+.context-menu-options-wrapper::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--context-menu-background)
+}
+
+.context-menu-options-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--context-menu-scrollthumb)
+}

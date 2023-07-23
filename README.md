@@ -1,11 +1,11 @@
 ## tiny-context-menu-js
 
-* 2 KB build
+* Gzips 2KB
 * Zero dependencies
-* Two themes & easy theme customization
-* Close on click away
-* Edge detection
-* Type safe
+* Light/Dark themes + easy customization
+* Type support
+* Edge detection, Dynamic Positioning
+* Accounts for any page scroll
 * Memory and Event Clean-up
 
 ### Installation
@@ -14,83 +14,69 @@
 npm i tiny-context-menu-js
 ```
 
-### General Setup
-
+### Vanilla js
 ```javascript
 import ContextMenu from "tiny-context-menu-js";
-
-/* ContextMenu.init() && ContextMenu.destroy() */
-ContextMenu(target, items, theme).init();
-ContextMenu().destroy(); // remove instance
-```
-
-### Schema
-
-* **ContextMenu(target, ..., ...)**
-  * HTMLElement: document.querySelector('.element');
-
----
-
-* **ContextMenu(..., items, ...)**
-  * Array[ Object, ... ]
-  * label is necessary - action is not.
-  * Must provide icons in Array with title included.
-    * Icons must be inline-svg
-  
-```javascript
-  [ { label: 'title', action: () ... },
-    { label: ['inlineSvg', 'title'], action: () ... }, ]
-```
-
----
-
-* **ContextMenu(..., ..., theme)**
-  * Optional: will default to dark
-  * String: "light" || "dark"
-  * Object: { text:#000, texthover:#000, background:#000, backgroundhover:#000 }
-
----
-
-### Example
-
-```javascript
-const target = document.querySelector('.target');
-const exampleCallback = () => { console.log("Example callback");}
-const items = [
-  {
-    label: "Item 1",
-    action: () => { console.log("Item 1"); }
-  },
-  {
-    label: "Item 2",
-    action: exampleCallback,
-  },
-  {
-    label: "Item 2",
-    // leave blank for no action
-  },
+const targetContainer = document.querySelector('.target-container')
+const options = [
+  { label: 'Item 1', action: () => { console.log('item 1'); } },
+  { label: 'Item 2', action: () => { console.log('item 2'); } },
 ]
 
-ContextMenu(target, items, "light").init();
-ContextMenu.destroy();
-ContextMenu(target, items,
-{ 
-  text: "#000", 
-  texthover: "#fff",
-  background: "#fff", 
-  backgroundhover: "#000",
-}).init();
+ContextMenu(targetContainer, options, 'light').init(); // initialize instance
+ContextMenu().destroy();                               // remove instance
 ```
 
-### Use inline SVG for icons
+### TypeScript
+```javascript
+import ContextMenu, { MenuOption } from "tiny-context-menu-js";
+const targetContainer = document.querySelector('.target-container') as HTMLElement;
+const options: MenuOption[] = [
+  { label: 'Item 1', action: () => { console.log('item 1'); } },
+  { label: 'Item 2', action: () => { console.log('item 2'); } },
+]
+
+ContextMenu(targetContainer, options).init(); // initialize instance (forego theme param for default 'dark')
+ContextMenu().destroy();                      // remove instance
+```
+
+### Options examples
 
 ```javascript
+
+// Use svgs within labels:
+// Must wrap label value in Array. 
+// Svg must be defined in first index of Array --> [svg, 'title']
 const svg = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="14px" width="14px" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>';
-[{
-  label: [svg, "Item Title"],
-  action: // ...
-}]
+
+const items = [
+  {
+    label: [svg, "Item Title"],
+  }
+]
 ```
+
+### Theme examples
+```javascript
+// Two pre-loaded themes (dark/light)
+const theme = 'dark'
+const theme2 = 'light'
+
+// Custom Theming - KEYS ARE CASE SENSITIVE
+const theme3 = { 
+  background: 'red',
+  backgroundhover: 'rgba(0, 255, 0, 0.8)',
+  text: '#eee',
+  texthover: '#FFFFFF',
+  scrollthumb: 'hsla(0, 0%, 20%, 0.8 )',
+}
+```
+
+### Altering CSS
+
+**CSS comes preloaded**
+- If you want to edit the CSS directly, do so in 
+`"../node_modules/tiny-context-menu-js/dist/context-menu.css"`
 
 ### License
 
